@@ -1,0 +1,9 @@
+# pra ignorar o venv
+venv/
+
+# pra ignorar o arquivo de banco de dados (SQLite)
+db.sqlite3
+
+# pra caches do Python
+__pycache__/
+*.pyc
