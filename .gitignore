@@ -7,3 +7,6 @@ db.sqlite3
 # pra caches do Python
 __pycache__/
 *.pyc
+
+# pra ignorar o arquivo de configuração do VS Code 
+.vscode/
