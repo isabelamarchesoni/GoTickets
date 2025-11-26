@@ -1,5 +1,5 @@
 {% extends "template.html" %}
-
+{% load static %}
 {% block titulo %} Home {%  endblock %}
 
 {% block conteudo %}
@@ -14,5 +14,13 @@
         <button class="btn-cad">Cadastrar</button>
     </div>
 </div>
-    <h2>aaaaaa</h2>
+<div class="container-home">
+    <div class="card">
+        <div class="card-body">
+            <h3>Sobre Nós<h3>
+            <p>TEXT<p>
+             <img src ="{% static 'styles/img/posterShow.jpg' %}"  width="200px" height="250px" alt="Poster">
+        </div>
+    </div>
+</div>
 {% endblock %}
