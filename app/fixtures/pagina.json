@@ -4,13 +4,13 @@
         "pk": 1,
         "fields": {
             "nome_do_site": "GoTickets",
-            "logo_do_site": "",
-            "texto_chamada": "Compre seus ingressos com segurança!",
-            "texto_sobre": "A GoTickets facilita sua vida na hora de garantir seus ingressos.",
-            "imagem_sobre": "",
-            "endereco": "Rua Exemplo, 123",
-            "email": "contato@gotickets.com",
-            "whatsapp": "11999999999",
+            "logo_do_site": "site/logoGoTickets.png",
+            "texto_chamada": "O GoTickets chegou para transformar a forma como você garante presença nos melhores shows e eventos! Com uma plataforma rápida, segura e intuitiva, você encontra ingressos para seus artistas favoritos",
+            "texto_sobre": "A GoTickets é uma plataforma digital especializada na venda de ingressos para shows, festivais e eventos culturais. Nosso objetivo é oferecer praticidade, transparência e segurança para o público que busca experiências marcantes. Trabalhamos com tecnologia moderna, integração simplificada e um ambiente totalmente confiável para que o usuário encontre, escolha e compre seus ingressos sem dificuldades. A empresa nasceu com a missão de aproximar pessoas daquilo que elas amam, oferecendo um serviço eficiente, acessível e focado na melhor experiência do usuário.",
+            "imagem_sobre": "site/posterTaylor.jpg",
+            "endereco": "Pça-19 de Janeiro - Praia Grande",
+            "email": "goTickets@gmail.com.br",
+            "whatsapp": "(13)xxxx-xxxx",
             "criado_em": "2024-01-01T00:00:00Z",
             "atualizado_em": "2024-01-01T00:00:00Z"
         }
