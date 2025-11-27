@@ -54,9 +54,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Produtos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#produto">Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#contato">Contato</a></li>
                     
            <a class="btn btn-outline-light" href="{% url 'login' %}" role="button">Login</a>
         </div>
