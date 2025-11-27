@@ -71,9 +71,26 @@
         </div>
     </div>
 
+     <!-- Produtos -->
     <h3 id="produtos" class="section-title mb-4">Produtos</h3>
     <div class="row mb-5">
+        {% for produto in produtos %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card product-card h-100 p-2">
+                {% if produto.foto %}
+                <img src="{{ produto.foto.url }}" class="card-img-top" alt="{{ produto.nome }}">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">{{ produto.nome }}</h5>
+                    <p class="card-text small text-muted">{{ produto.descricao|truncatechars:50 }}</p>
+                    <h5 class="my-3">Preço: R$ {{ produto.preco }}</h5>
+                    <a href="{% url 'comprar' produto.id %}" class="btn btn-buy">Comprar</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
         <div class="col-12 text-center"><p>Nenhum produto cadastrado.</p></div>
+        {% endfor %}
     </div>
 
     <div id="contato" class="card-custom">

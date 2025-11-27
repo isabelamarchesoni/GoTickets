@@ -1,14 +1,15 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Pagina
+from django.contrib.auth.decorators import login_required
+from .models import Pagina, Produto, Pedido
 from .forms import ContatoForm, CadastroForm
 
 def home(request):
     pagina = Pagina.objects.first()
-    
+    produtos = Produto.objects.all() 
     if request.method == 'POST':
         form = ContatoForm(request.POST)
         if form.is_valid():
@@ -18,7 +19,11 @@ def home(request):
     else:
         form = ContatoForm()
 
-    context = {'pagina': pagina, 'form_contato': form}
+    context = {
+        'pagina': pagina, 
+        'form_contato': form,
+        'produtos': produtos
+    }
     return render(request, 'home.html', context)
 
 def cadastro(request):
@@ -35,3 +40,27 @@ def cadastro(request):
 @login_required
 def perfil(request):
     return render(request, 'perfil.html')
+
+def comprar(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    if request.method == 'POST':
+        try:
+            qtd = int(request.POST.get('quantidade', 1))
+        except ValueError:
+            qtd = 1
+        
+        if qtd > produto.estoque:
+            messages.error(request, 'Estoque insuficiente.')
+            return redirect('comprar', produto_id=produto_id)
+        elif qtd <= 0:
+            messages.error(request, 'Quantidade inválida.')
+            return redirect('comprar', produto_id=produto_id) 
+        
+        else:
+            Pedido.objects.create(usuario=request.user, produto=produto, quantidade=qtd, total=produto.preco*qtd)
+            produto.estoque -= qtd
+            produto.save()
+            messages.success(request, 'Compra realizada!')
+            return redirect('perfil')
+            
+    return render(request, 'pedido.html', {'produto': produto})
