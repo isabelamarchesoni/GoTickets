@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Pagina
 from .forms import ContatoForm, CadastroForm
@@ -31,3 +32,6 @@ def cadastro(request):
         form = CadastroForm()
     return render(request, 'cadastro.html', {'form': form})
 
+@login_required
+def perfil(request):
+    return render(request, 'perfil.html')
