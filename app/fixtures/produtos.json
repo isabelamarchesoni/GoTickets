@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "nome": "Show Sombr",
+    "estoque": 48,
+    "preco": 250,
+    "descricao": "Pista Premium",
+    "foto": "produtos/showSombr.jpg",
+    "criado_em": "2025-11-27 02:53:11.954413",
+    "atualizado_em": "2025-11-27 03:06:40.063011"
+  },
+  {
+    "id": 2,
+    "nome": "Show The Neighbourhood",
+    "estoque": 100,
+    "preco": 200,
+    "descricao": "Pista Comum",
+    "foto": "produtos/showTheNBHD.jpg",
+    "criado_em": "2025-11-27 12:32:29.967261",
+    "atualizado_em": "2025-11-27 12:32:29.967316"
+  },
+  {
+    "id": 3,
+    "nome": "Show Louis Tomlinson",
+    "estoque": 20,
+    "preco": 400,
+    "descricao": "Pista Premium",
+    "foto": "produtos/showFaithInTheFuture.jpg",
+    "criado_em": "2025-11-27 12:56:07.973400",
+    "atualizado_em": "2025-11-27 12:56:07.973459"
+  },
+  {
+    "id": 5,
+    "nome": "Show Lana Del Rey",
+    "estoque": 30,
+    "preco": 350,
+    "descricao": "Cadeira Superior",
+    "foto": "produtos/showHoneyMoon.jpg",
+    "criado_em": "2025-11-27 12:58:31.478033",
+    "atualizado_em": "2025-11-27 12:58:31.478084"
+  },
+  {
+    "id": 6,
+    "nome": "Show Taylor Swift",
+    "estoque": 2,
+    "preco": 700,
+    "descricao": "Pista Premium",
+    "foto": "produtos/showTaylor.webp",
+    "criado_em": "2025-11-27 12:59:14.233751",
+    "atualizado_em": "2025-11-27 13:02:17.613751"
+  },
+  {
+    "id": 7,
+    "nome": "Show Tanerélle",
+    "estoque": 100,
+    "preco": 200,
+    "descricao": "Pista Comum",
+    "foto": "produtos/show11-11.png",
+    "criado_em": "2025-11-27 13:00:13.117258",
+    "atualizado_em": "2025-11-27 13:13:49.164699"
+  },
+  {
+    "id": 8,
+    "nome": "Show Arctic Monkeys",
+    "estoque": 50,
+    "preco": 300,
+    "descricao": "Cadeira Inferior",
+    "foto": "produtos/showArcticMonkeys.jpg",
+    "criado_em": "2025-11-27 13:00:53.487379",
+    "atualizado_em": "2025-11-27 13:00:53.487435"
+  },
+  {
+    "id": 9,
+    "nome": "Show Sabrina Carpenter",
+    "estoque": 15,
+    "preco": 350,
+    "descricao": "Pista Premium",
+    "foto": "produtos/showSabrina.jpg",
+    "criado_em": "2025-11-27 13:04:06.601453",
+    "atualizado_em": "2025-11-27 13:08:34.799846"
+  }
+]
