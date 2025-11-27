@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*t9h$7qvu-9@7kz^2-gtdnr*+7+3)&yk9e-u$f#09ot5alqlt5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'gotickets.fly.dev', # Seu domínio no Fly.io
+    '.fly.dev',
+    '*' # Manter * apenas se os anteriores falharem ou for estritamente necessário no ambiente
+]
 
 
 # Application definition
@@ -116,9 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-        BASE_DIR / 'static'
+    os.path.join(BASE_DIR, 'static'), 
 ]
 
 MEDIA_URL = '/media/'

@@ -10,6 +10,7 @@ RUN mkdir -p /code
 WORKDIR /code
 
 COPY requirements.txt /tmp/requirements.txt
+# Certifique-se de que 'gunicorn' está no requirements.txt (veja o item 3)
 RUN set -ex && \
     pip install --upgrade pip && \
     pip install -r /tmp/requirements.txt && \
@@ -21,4 +22,5 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["python","manage.py","runserver","0.0.0.0:8000"]
+# Usando Gunicorn para servir a aplicação WSGI na porta 8000
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
