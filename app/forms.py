@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contato
+from .models import Contato,Pedido
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
@@ -49,3 +49,12 @@ class LoginForm(AuthenticationForm):
             'class': 'form-control',
             'placeholder': 'Digite sua senha'
         })
+
+        
+class PedidoForm(BootstrapFormMixin, forms.ModelForm):
+    class Meta:
+        model = Pedido
+        fields = ['quantidade']
+        widgets = {
+            'quantidade': forms.NumberInput(attrs={'placeholder': '0'})
+        }

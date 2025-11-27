@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required
 from .models import Pagina, Produto, Pedido
 from .forms import ContatoForm, CadastroForm
 
@@ -39,8 +38,10 @@ def cadastro(request):
 
 @login_required
 def perfil(request):
-    return render(request, 'perfil.html')
+    pedidos = Pedido.objects.filter(usuario=request.user).order_by('-data')
+    return render(request, 'perfil.html',{'pedidos': pedidos})
 
+@login_required
 def comprar(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     if request.method == 'POST':
