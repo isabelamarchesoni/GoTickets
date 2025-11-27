@@ -1,141 +1,162 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-</head>
-<body>
-<header>
-    <style>   
+    <title>{% block titulo %}template{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
         :root {
-            --primary-green: #0c184bff; 
-            --accent-green: #677ad1ff;
+            --primary-blue: #0c184bff;
+            --accent-blue: #677ad1ff;
         }
-        body {  
-            background-color: #f9f9f9; font-family: sans-serif; 
+
+        body {
+            background-color: #f9f9f9;
+            font-family: sans-serif;
         }
-        
+
         .navbar-logo {
-            max-height:100px; 
-            height: auto;
+            max-height: 60px;
             width: auto;
-            margin-right: 2px; /* Reduzindo drasticamente o espaçamento */
         }
 
         .navbar-custom {
-            min-height: 60px; 
-        }   
-        .navbar-custom { 
-            background-color: var(--primary-green); 
-            padding: 15px 0; 
-            height: 60px; 
+            background-color: var(--primary-blue);
+            padding: 2px 0;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            margin-right: 15px;
+        }
+
+        .nav-link:hover { 
+            color: white !important; 
+        }
+
+        .perfil-link {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
-        .navbar-brand { font-weight: bold; font-size: 1.5rem; color: white !important; }
-        .nav-link { color: rgba(255,255,255,0.8) !important; margin-right: 15px; transition: color 0.3s; }
-        .nav-link:hover { color: white !important; }
-        
-        .btn-login { 
-            background-color: var(--accent-green); 
-            color: white; 
-            font-weight: bold; 
-            border: none; 
-            padding: 8px 25px; 
-            border-radius: 5px;
-        }
-        .btn-login:hover { background-color: #5062b4ff; color: white; }
 
-        .btn-perfil {
-            background-color: var(--accent-green);
+        .perfil-icone {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            margin-bottom: 4px;
+        }
+
+        .perfil-texto {
+            font-size: 13px;
+            line-height: 1.1;
+        }
+
+        .btn-logout img:hover { 
+            opacity: .7; 
+            cursor: pointer;
+        }
+
+        footer {
+            background-color:#0c184bff;
             color: white;
-            font-weight: bold;
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-right: 10px;
+            padding: 20px 0;
         }
-        .btn-perfil:hover { background-color: #95b4e2ff; color: white; }
+    </style>
+</head>
+<body>
 
-        .btn-logout {
-            background-color: #b60517ff; 
-            color: white;
-            font-weight: bold;
-            padding: 8px 20px;
-            border-radius: 5px;
-            border: none;
-        }
-        .btn-logout:hover { background-color: #7a0712ff; color: white; }
-
-        footer { background-color: #000; color: white; padding: 20px 0; font-size: 0.9rem; }
-    
-    </style>   
-   <nav class="navbar navbar-expand-lg navbar-custom">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img src="{{ pagina.logo_do_site.url }}" class="img-fluid rounded navbar-logo" alt="Logo" >
+            <a class="navbar-brand text-white fw-bold" href="{% url 'home' %}">
+                <img src="{{ pagina.logo_do_site.url }}" class="navbar-logo me-2" alt="Logo">
                 GoTickets
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
+
                 <ul class="navbar-nav ms-auto align-items-center">
+
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#sobre">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#produtos">Produtos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#contato">Contato</a></li>
-                    
+
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="btn-perfil" href="{% url 'perfil' %}">
-                                Perfil ({{ user.username }})
+                        <li class="nav-item text-center">
+                            <a href="{% url 'perfil' %}" class="perfil-link">
+                                <img src="{% static 'img/login.png' %}" class="perfil-icone">
+                                <div class="perfil-texto">Olá, <strong>{{ user.username }}</strong></div>
                             </a>
                         </li>
-                    <li class="nav-item">
-                      <form action="{% url 'logout' %}" method="post" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-logout p-0 border-0 bg-transparent">
-                            <img src="{% static 'img/logout.png' %}" alt="Logout" style="width: 28px; cursor: pointer;">
-                        </button>
-                      </form>
-                    </li>
+
+                        <li class="nav-item text-center">
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-logout bg-transparent border-0">
+                                    <img src="{% static 'img/logout.png' %}" style="width: 28px;">
+                                </button>
+                            </form>
+                        </li>
 
                     {% else %}
-                        <li class="nav-item"><a class="btn btn-login" href="{% url 'login' %}">Login</a></li>
-                    {% endif %}        
+                        <li class="nav-item text-center">
+                            <a href="{% url 'login' %}" class="perfil-link">
+                                <img src="{% static 'img/login.png' %}" class="perfil-icone">
+                                <div class="perfil-texto">Login</div>
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
+
             </div>
         </div>
     </nav>
 </header>
-    <main>
-        {% block conteudo %}
-            <div style="min-height: 80vh;">
+
+
+<main>
+
+    {% block conteudo %}
+    <div style="min-height: 80vh;">
+
         {% if messages %}
-            <div class="container mt-3">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                {% endfor %}
-            </div>
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
         {% endif %}
-        
+
         {% block content %}{% endblock %}
     </div>
-        <footer class="text-center mt-5">
-        <div class="container">
-            <p class="mb-0">&copy; 2025 CodeDjango. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        {% endblock %}
-    </main>
+</main>
+
+
+<footer class="text-center mt-5">
+    <div class="container">
+        <p class="mb-0">&copy; 2025 GoTickets — Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
