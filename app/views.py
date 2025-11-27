@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Pagina
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Pagina, Produto, Pedido
 from .forms import ContatoForm, CadastroForm
 
 def home(request):
@@ -31,3 +33,23 @@ def cadastro(request):
         form = CadastroForm()
     return render(request, 'cadastro.html', {'form': form})
 
+@login_required
+def comprar(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    if request.method == 'POST':
+        try:
+            qtd = int(request.POST.get('quantidade', 1))
+        except ValueError:
+            qtd = 1
+        
+        if qtd > produto.estoque:
+            messages.error(request, 'Estoque insuficiente.')
+        elif qtd <= 0:
+            messages.error(request, 'Quantidade inválida.')
+        else:
+            Pedido.objects.create(usuario=request.user, produto=produto, quantidade=qtd, total=produto.preco*qtd)
+            produto.estoque -= qtd
+            produto.save()
+            messages.success(request, 'Compra realizada!')
+            return redirect('perfil')
+    return render(request, 'pedido.html', {'produto': produto})
