@@ -1,0 +1,95 @@
+{% extends 'template.html' %}
+
+{% block conteudo %}
+<style>
+    body { background-color: #f8f9fa; }
+    
+    .login-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        background-color: white;
+        padding: 40px;
+    }
+
+    .login-title {
+        color: #0c184bff; 
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .login-title::after {
+        content: ''; display: block; width: 50px; height: 3px;
+        background-color: #0c184bff; 
+        margin: 10px auto 0; border-radius: 2px;
+    }
+
+    .btn-entrar {
+        background-color: #0c184bff; 
+        color: white; font-weight: bold;
+        padding: 12px; border-radius: 6px; border: none; width: 100%;
+        transition: background 0.3s;
+    }
+    .btn-entrar:hover { 
+        background-color: #677ad1ff; 
+        color: white; 
+    }
+    
+    .text-center a.text-success {
+        color: #0c184bff !important; 
+    }
+
+    .text-center a.text-success:hover {
+        color: #677ad1ff !important; 
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="col-md-5 col-lg-4">
+            
+            <div class="card login-card">
+                <h2 class="login-title">Login</h2>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                        <div class="alert alert-danger text-center small mb-4">
+                            Usuário ou senha incorretos.
+                        </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold d-block text-start">Usuário:</label>
+                        {{ form.username }}
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label text-muted small fw-bold d-block text-start" >Senha:</label>
+                        {{ form.password }}
+                    </div>
+
+                    <button type="submit" class="btn btn-entrar mb-3">Entrar</button>
+
+                    <div class="text-center">
+                        <p class="small text-muted mb-0">
+                            Não tem conta? 
+                            <a href="{% url 'cadastro' %}" class="text-success fw-bold text-decoration-none">Cadastre-se aqui</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
