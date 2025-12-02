@@ -71,7 +71,7 @@ gotickets/
 
 ## **1️⃣ Clone o repositório**
 ```bash
-git clone https://github.com/SEU-USUARIO/gotickets.git
+git clone https://github.com/isabelamarchesoni/GoTickets.git
 cd gotickets
 ```
 
