@@ -24,7 +24,6 @@ O projeto segue boas práticas, possui design responsivo e implementa um fluxo c
 
 ### **Back-end**
 - Django (Python)  
-- Django ORM  
 - Rotas, Views, Templates  
 
 ### **Front-end**
@@ -68,17 +67,14 @@ gotickets/
 └── README.md
 ```
 
-```
-
----
-
 ## 🚀 **Como Executar o Projeto**
 
-### **1️⃣ Clone o repositório**
+## **1️⃣ Clone o repositório**
 ```bash
 git clone https://github.com/SEU-USUARIO/gotickets.git
 cd gotickets
 ```
+
 
 ### **2️⃣ Crie um ambiente virtual**
 ```bash
